@@ -1,0 +1,746 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>机器学习简介 &#8212; 计算机学习笔记</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/intro/intro';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="机器学习基础" href="basics.html" />
+    <link rel="prev" title="AI 学习笔记" href="../../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="计算机学习笔记 - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="计算机学习笔记 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">机器学习</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">机器学习简介</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="basics.html">机器学习基础</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html">数据预处理</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../supervised/supervised.html">Supervised</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../supervised/regression.html">Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supervised/classification.html">Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supervised/evaluation.html">Evaluation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../unsupervised/unsupervised.html">Unsupervised</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../unsupervised/clustering.html">Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unsupervised/dimensionality.html">Dimensionality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unsupervised/anomaly.html">Anomaly</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../advanced/advanced.html">Advanced</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/ensemble.html">Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/feature.html">Feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/tuning.html">Tuning</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../model/model.html">Model</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../model/selection.html">Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model/validation.html">Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model/interpretation.html">Interpretation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../optimization/optimization.html">Optimization</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../optimization/gradient.html">Gradient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optimization/stochastic.html">Stochastic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optimization/bayesian.html">Bayesian</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">深度学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../deep/deep.html">Deep</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deep/neural.html">Neural</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/cnn.html">Cnn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/rnn.html">Rnn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/gan.html">Gan</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../architectures/architectures.html">Architectures</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../architectures/resnet.html">Resnet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architectures/inception.html">Inception</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architectures/transformer.html">Transformer</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../training/training.html">Training</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../training/techniques.html">Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../training/hyperparameters.html">Hyperparameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../training/regularization.html">Regularization</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">自然语言处理和大语言模型</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nlp/nlp.html">Nlp</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../nlp/tokenization.html">Tokenization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nlp/embedding.html">Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nlp/translation.html">Translation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../llm/llm.html">Llm</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../llm/transformers.html">Transformers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../llm/bert.html">Bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../llm/gpt.html">Gpt</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">实际应用</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../applications/applications.html">Applications</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../applications/nlp.html">Nlp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/vision.html">Vision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/recommendation.html">Recommendation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/deployment.html">Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../production/production.html">Production</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../production/scalability.html">Scalability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../production/monitoring.html">Monitoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../production/maintenance.html">Maintenance</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../case_studies/case_studies.html">Case Studies</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../case_studies/e_commerce.html">E Commerce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../case_studies/healthcare.html">Healthcare</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../case_studies/finance.html">Finance</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ikingye/study-cs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ikingye/study-cs/issues/new?title=Issue%20on%20page%20%2Fdocs/intro/intro.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/intro/intro.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>机器学习简介</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">什么是机器学习？</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">机器学习的类型</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">监督学习</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">分类</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">回归</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">无监督学习</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">聚类</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">降维</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">半监督学习</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">强化学习</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">机器学习的应用领域</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">计算机视觉</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">自然语言处理</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">推荐系统</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">医疗健康</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">机器学习的挑战</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">数据质量</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">模型复杂性</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">解释性和透明性</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">道德和隐私问题</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">总结</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>机器学习简介<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="id2">
+<h2>什么是机器学习？<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>机器学习（Machine Learning，简称 ML）是人工智能（Artificial Intelligence，简称 AI）的一个分支，重点在于开发能够使计算机在没有明确指令的情况下执行特定任务的算法和统计模型。这些系统依赖于从数据中提取的模式和推断。机器学习在各种应用中得到了广泛使用，例如电子邮件过滤、网络入侵检测和计算机视觉等领域，在这些领域中，使用传统算法难以实现所需的功能。</p>
+</section>
+<section id="id3">
+<h2>机器学习的类型<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h3>监督学习<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>监督学习是最常见的机器学习类型。在监督学习中，模型在带标签的数据集上进行训练，这意味着每个训练示例都与一个输出标签配对。算法通过输入数据及其关联的输出标签进行学习，从而能够进行预测或决策。监督学习任务的例子包括分类和回归。</p>
+<section id="id5">
+<h4>分类<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+<p>分类是指将输入数据分配到预定义的类别中。常见的分类任务包括垃圾邮件检测、图像识别和信用评分等。在这些任务中，模型需要学习从输入特征中提取有用的信息，并根据这些信息做出正确的分类决策。</p>
+</section>
+<section id="id6">
+<h4>回归<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
+<p>回归任务的目标是预测一个连续值，例如房价预测、股票价格预测等。与分类不同，回归的输出是一个连续的数值，而不是离散的类别。回归模型通过学习输入特征和输出值之间的关系，来进行准确的数值预测。</p>
+</section>
+</section>
+<section id="id7">
+<h3>无监督学习<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>无监督学习涉及在没有标签的数据上训练模型。其目标是发现数据中的隐藏模式或结构。无监督学习的常见任务包括聚类和降维。</p>
+<section id="id8">
+<h4>聚类<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
+<p>聚类是将相似的数据点分组的过程。一个典型的例子是客户细分，通过聚类分析可以将客户分成不同的组，每组中的客户具有相似的购买行为或特征，从而便于制定有针对性的营销策略。</p>
+</section>
+<section id="id9">
+<h4>降维<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
+<p>降维是减少数据集中的特征数量，同时尽可能保留重要信息的过程。常见的降维技术包括主成分分析（PCA）和线性判别分析（LDA）。降维不仅可以减少计算成本，还可以帮助模型更好地理解数据的结构。</p>
+</section>
+</section>
+<section id="id10">
+<h3>半监督学习<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p>半监督学习是介于监督学习和无监督学习之间的一种方法。它利用少量带标签的数据和大量未带标签的数据进行训练。这种方法在标注数据昂贵或难以获取的情况下特别有用。半监督学习能够提高模型的泛化能力和准确性。</p>
+</section>
+<section id="id11">
+<h3>强化学习<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<p>强化学习是一种基于奖励和惩罚机制的学习方法。在强化学习中，智能体通过与环境的交互来学习如何采取行动，以最大化累积奖励。常见的应用包括机器人控制、游戏 AI 和自动驾驶等。强化学习模型通过试错法进行学习，并根据反馈不断调整其策略。</p>
+</section>
+</section>
+<section id="id12">
+<h2>机器学习的应用领域<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<p>机器学习在多个领域有广泛的应用，以下是一些典型的应用场景：</p>
+<section id="id13">
+<h3>计算机视觉<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<p>计算机视觉是指让计算机具有人类视觉能力的技术。通过机器学习，计算机可以从图像和视频中提取信息，进行物体检测、面部识别、图像分割等任务。应用包括自动驾驶、医疗影像分析和安防监控等。</p>
+</section>
+<section id="id14">
+<h3>自然语言处理<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<p>自然语言处理（NLP）是使计算机能够理解、解释和生成人类语言的技术。机器学习在 NLP 中的应用包括文本分类、情感分析、机器翻译和对话系统等。NLP 技术被广泛应用于搜索引擎、虚拟助手和社交媒体分析等领域。</p>
+</section>
+<section id="id15">
+<h3>推荐系统<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<p>推荐系统利用机器学习技术，为用户提供个性化的产品或服务推荐。通过分析用户的历史行为和偏好，推荐系统可以预测用户可能感兴趣的内容，从而提高用户满意度和业务转化率。常见的应用包括电子商务平台的商品推荐、流媒体平台的内容推荐等。</p>
+</section>
+<section id="id16">
+<h3>医疗健康<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
+<p>机器学习在医疗健康领域的应用正在迅速发展。通过分析大量的医疗数据，机器学习模型可以辅助医生进行疾病诊断、治疗方案推荐和预测病情发展。此外，机器学习还被用于基因组学研究、药物开发和健康监测等方面。</p>
+</section>
+</section>
+<section id="id17">
+<h2>机器学习的挑战<a class="headerlink" href="#id17" title="Link to this heading">#</a></h2>
+<p>尽管机器学习在许多领域取得了显著的成果，但仍然面临一些挑战：</p>
+<section id="id18">
+<h3>数据质量<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
+<p>高质量的数据是机器学习模型成功的关键。然而，获取和处理大量高质量的数据往往需要耗费大量的时间和资源。此外，数据可能存在噪声、不完整或偏差等问题，这些都会影响模型的性能。</p>
+</section>
+<section id="id19">
+<h3>模型复杂性<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
+<p>随着数据和任务的复杂性增加，机器学习模型也变得越来越复杂。这不仅增加了模型训练的难度，还可能导致模型过拟合问题。过拟合是指模型在训练数据上表现很好，但在新数据上的表现不佳。</p>
+</section>
+<section id="id20">
+<h3>解释性和透明性<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
+<p>许多机器学习模型，特别是深度学习模型，被视为“黑箱”，因为它们的内部工作机制难以解释。这对某些应用场景，如医疗和金融领域，可能会带来问题，因为这些领域需要对模型的决策过程有清晰的理解和解释。</p>
+</section>
+<section id="id21">
+<h3>道德和隐私问题<a class="headerlink" href="#id21" title="Link to this heading">#</a></h3>
+<p>机器学习模型的应用可能涉及用户隐私和数据安全问题。例如，在处理个人数据时，需要确保数据的安全性和隐私性。此外，机器学习模型可能存在偏见和歧视问题，因此需要在设计和应用时考虑道德和公平性。</p>
+</section>
+</section>
+<section id="id22">
+<h2>总结<a class="headerlink" href="#id22" title="Link to this heading">#</a></h2>
+<p>机器学习作为人工智能的重要分支，正在推动技术进步和社会发展。通过理解和掌握机器学习的基本概念和方法，我们可以在各个领域中应用这些技术，解决实际问题并创造新的价值。然而，我们也需要关注机器学习应用中的挑战和问题，确保技术的发展与社会需求相适应。</p>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/intro"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">AI 学习笔记</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="basics.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">机器学习基础</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">什么是机器学习？</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">机器学习的类型</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">监督学习</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">分类</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">回归</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">无监督学习</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">聚类</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">降维</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">半监督学习</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">强化学习</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">机器学习的应用领域</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">计算机视觉</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">自然语言处理</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">推荐系统</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">医疗健康</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">机器学习的挑战</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">数据质量</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">模型复杂性</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">解释性和透明性</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">道德和隐私问题</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">总结</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By 叶王
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  多看书，多学习
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

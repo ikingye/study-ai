@@ -1,0 +1,795 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>机器学习基础 &#8212; 计算机学习笔记</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/intro/basics';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Data" href="data.html" />
+    <link rel="prev" title="机器学习简介" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="计算机学习笔记 - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="计算机学习笔记 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">机器学习</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">机器学习简介</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">机器学习基础</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html">数据预处理</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../supervised/supervised.html">Supervised</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../supervised/regression.html">Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supervised/classification.html">Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supervised/evaluation.html">Evaluation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../unsupervised/unsupervised.html">Unsupervised</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../unsupervised/clustering.html">Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unsupervised/dimensionality.html">Dimensionality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unsupervised/anomaly.html">Anomaly</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../advanced/advanced.html">Advanced</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/ensemble.html">Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/feature.html">Feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/tuning.html">Tuning</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../model/model.html">Model</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../model/selection.html">Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model/validation.html">Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model/interpretation.html">Interpretation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../optimization/optimization.html">Optimization</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../optimization/gradient.html">Gradient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optimization/stochastic.html">Stochastic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optimization/bayesian.html">Bayesian</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">深度学习</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../deep/deep.html">Deep</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deep/neural.html">Neural</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/cnn.html">Cnn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/rnn.html">Rnn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/gan.html">Gan</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../architectures/architectures.html">Architectures</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../architectures/resnet.html">Resnet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architectures/inception.html">Inception</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architectures/transformer.html">Transformer</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../training/training.html">Training</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../training/techniques.html">Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../training/hyperparameters.html">Hyperparameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../training/regularization.html">Regularization</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">自然语言处理和大语言模型</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nlp/nlp.html">Nlp</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../nlp/tokenization.html">Tokenization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nlp/embedding.html">Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nlp/translation.html">Translation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../llm/llm.html">Llm</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../llm/transformers.html">Transformers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../llm/bert.html">Bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../llm/gpt.html">Gpt</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">实际应用</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../applications/applications.html">Applications</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../applications/nlp.html">Nlp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/vision.html">Vision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/recommendation.html">Recommendation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/deployment.html">Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../production/production.html">Production</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../production/scalability.html">Scalability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../production/monitoring.html">Monitoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../production/maintenance.html">Maintenance</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../case_studies/case_studies.html">Case Studies</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../case_studies/e_commerce.html">E Commerce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../case_studies/healthcare.html">Healthcare</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../case_studies/finance.html">Finance</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ikingye/study-cs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ikingye/study-cs/issues/new?title=Issue%20on%20page%20%2Fdocs/intro/basics.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/intro/basics.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>机器学习基础</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">术语解释</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">数据集（Dataset）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature">特征（Feature）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#label">标签（Label）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model">模型（Model）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training">训练（Training）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">测试（Testing）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overfitting">过拟合（Overfitting）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#underfitting">欠拟合（Underfitting）</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">数据类型</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-data">数值数据（Numerical Data）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-data">分类数据（Categorical Data）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-data">序列数据（Sequential Data）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-data">图像数据（Image Data）</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">机器学习基本流程</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">数据收集（Data Collection）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">数据预处理（Data Preprocessing）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-selection">模型选择（Model Selection）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-training">模型训练（Model Training）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-evaluation">模型评估（Model Evaluation）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-optimization">模型优化（Model Optimization）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-deployment">模型部署（Model Deployment）</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">机器学习的基本算法</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">线性回归（Linear Regression）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">逻辑回归（Logistic Regression）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree">决策树（Decision Tree）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machine-svm">支持向量机（Support Vector Machine，SVM）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-k-nearest-neighbors-knn">K-近邻算法（K-Nearest Neighbors，KNN）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">随机森林（Random Forest）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-networks">神经网络（Neural Networks）</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>机器学习基础<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="id2">
+<h2>术语解释<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>在学习机器学习之前，了解一些常用术语是非常重要的。这些术语有助于我们更好地理解机器学习的概念和方法。</p>
+<section id="dataset">
+<h3>数据集（Dataset）<a class="headerlink" href="#dataset" title="Link to this heading">#</a></h3>
+<p>数据集是用于训练和测试机器学习模型的集合。它通常包含多个样本，每个样本由特征和标签组成。特征是描述样本的属性，而标签是我们希望预测的值。</p>
+</section>
+<section id="feature">
+<h3>特征（Feature）<a class="headerlink" href="#feature" title="Link to this heading">#</a></h3>
+<p>特征是用于描述数据样本的单个属性。例如，在一个用于预测房价的数据集中，特征可以包括房子的面积、房间数量、所在位置等。</p>
+</section>
+<section id="label">
+<h3>标签（Label）<a class="headerlink" href="#label" title="Link to this heading">#</a></h3>
+<p>标签是我们希望模型预测的目标值。在监督学习中，每个数据样本都有一个标签。例如，在房价预测中，标签就是房子的价格。</p>
+</section>
+<section id="model">
+<h3>模型（Model）<a class="headerlink" href="#model" title="Link to this heading">#</a></h3>
+<p>模型是通过训练算法从数据中学到的数学表示。它能够根据输入特征做出预测。模型的性能取决于训练数据的质量和算法的选择。</p>
+</section>
+<section id="training">
+<h3>训练（Training）<a class="headerlink" href="#training" title="Link to this heading">#</a></h3>
+<p>训练是指使用已有的数据来调整模型的参数，使其能够准确地进行预测。训练过程涉及多次迭代，每次迭代模型都会调整其参数，以减少预测误差。</p>
+</section>
+<section id="testing">
+<h3>测试（Testing）<a class="headerlink" href="#testing" title="Link to this heading">#</a></h3>
+<p>测试是指在未见过的数据上评估模型的性能。通过测试，我们可以了解模型在实际应用中的表现。</p>
+</section>
+<section id="overfitting">
+<h3>过拟合（Overfitting）<a class="headerlink" href="#overfitting" title="Link to this heading">#</a></h3>
+<p>过拟合是指模型在训练数据上表现很好，但在新数据上表现不佳。这通常是因为模型过于复杂，能够记住训练数据中的噪声和细节。</p>
+</section>
+<section id="underfitting">
+<h3>欠拟合（Underfitting）<a class="headerlink" href="#underfitting" title="Link to this heading">#</a></h3>
+<p>欠拟合是指模型在训练数据和新数据上都表现不佳。这通常是因为模型过于简单，无法捕捉数据中的复杂模式。</p>
+</section>
+</section>
+<section id="id3">
+<h2>数据类型<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>在机器学习中，我们通常会处理以下几种类型的数据：</p>
+<section id="numerical-data">
+<h3>数值数据（Numerical Data）<a class="headerlink" href="#numerical-data" title="Link to this heading">#</a></h3>
+<p>数值数据是指可以用数字表示的数据。这类数据可以是连续的（如温度、身高）或离散的（如学生人数、房间数量）。</p>
+</section>
+<section id="categorical-data">
+<h3>分类数据（Categorical Data）<a class="headerlink" href="#categorical-data" title="Link to this heading">#</a></h3>
+<p>分类数据是指可以用类别或标签表示的数据。这类数据通常是离散的，如颜色（红、绿、蓝）、性别（男、女）等。</p>
+</section>
+<section id="sequential-data">
+<h3>序列数据（Sequential Data）<a class="headerlink" href="#sequential-data" title="Link to this heading">#</a></h3>
+<p>序列数据是指具有顺序关系的数据，如时间序列数据、文本数据等。序列数据的特点是前后数据点之间存在相关性。</p>
+</section>
+<section id="image-data">
+<h3>图像数据（Image Data）<a class="headerlink" href="#image-data" title="Link to this heading">#</a></h3>
+<p>图像数据是指以图像形式存在的数据。每张图像可以表示为一个像素矩阵，每个像素有一个或多个颜色通道。</p>
+</section>
+</section>
+<section id="id4">
+<h2>机器学习基本流程<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>机器学习的基本流程可以分为以下几个步骤：</p>
+<section id="data-collection">
+<h3>数据收集（Data Collection）<a class="headerlink" href="#data-collection" title="Link to this heading">#</a></h3>
+<p>数据收集是机器学习流程的第一步。在这一阶段，我们需要收集足够多的高质量数据。数据可以来自多种来源，如数据库、网络抓取、传感器等。</p>
+</section>
+<section id="data-preprocessing">
+<h3>数据预处理（Data Preprocessing）<a class="headerlink" href="#data-preprocessing" title="Link to this heading">#</a></h3>
+<p>数据预处理是对原始数据进行清洗和转换的过程，以便模型能够更好地理解和利用这些数据。数据预处理包括处理缺失值、数据规范化、特征提取等步骤。</p>
+</section>
+<section id="model-selection">
+<h3>模型选择（Model Selection）<a class="headerlink" href="#model-selection" title="Link to this heading">#</a></h3>
+<p>在选择模型时，我们需要考虑任务的类型和数据的特点。常见的模型包括线性回归、决策树、支持向量机、神经网络等。</p>
+</section>
+<section id="model-training">
+<h3>模型训练（Model Training）<a class="headerlink" href="#model-training" title="Link to this heading">#</a></h3>
+<p>模型训练是指使用训练数据来调整模型的参数，使其能够准确地进行预测。在训练过程中，我们需要设置超参数、选择损失函数和优化算法。</p>
+</section>
+<section id="model-evaluation">
+<h3>模型评估（Model Evaluation）<a class="headerlink" href="#model-evaluation" title="Link to this heading">#</a></h3>
+<p>模型评估是指在测试数据上评估模型的性能。常用的评估指标包括准确率、精确率、召回率、F1 分数等。</p>
+</section>
+<section id="model-optimization">
+<h3>模型优化（Model Optimization）<a class="headerlink" href="#model-optimization" title="Link to this heading">#</a></h3>
+<p>模型优化是指通过调整模型的参数和结构，提升模型的性能。这可以包括调参、使用正则化技术、增加数据等。</p>
+</section>
+<section id="model-deployment">
+<h3>模型部署（Model Deployment）<a class="headerlink" href="#model-deployment" title="Link to this heading">#</a></h3>
+<p>模型部署是指将训练好的模型应用到实际环境中，以便进行预测或决策。部署过程中，我们需要考虑模型的响应速度、资源消耗和可靠性。</p>
+</section>
+</section>
+<section id="id5">
+<h2>机器学习的基本算法<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<section id="linear-regression">
+<h3>线性回归（Linear Regression）<a class="headerlink" href="#linear-regression" title="Link to this heading">#</a></h3>
+<p>线性回归是一种最基本的回归算法，用于预测连续值。它假设特征与标签之间存在线性关系，通过最小化预测值与真实值之间的均方误差来调整模型参数。</p>
+</section>
+<section id="logistic-regression">
+<h3>逻辑回归（Logistic Regression）<a class="headerlink" href="#logistic-regression" title="Link to this heading">#</a></h3>
+<p>逻辑回归是一种用于分类任务的算法，尽管其名称中包含“回归”。它通过估计某个事件发生的概率来进行分类，通常用于二分类问题。</p>
+</section>
+<section id="decision-tree">
+<h3>决策树（Decision Tree）<a class="headerlink" href="#decision-tree" title="Link to this heading">#</a></h3>
+<p>决策树是一种基于树结构的算法，用于分类和回归任务。它通过递归地分割数据空间，建立一系列决策规则，最终形成树状结构。</p>
+</section>
+<section id="support-vector-machine-svm">
+<h3>支持向量机（Support Vector Machine，SVM）<a class="headerlink" href="#support-vector-machine-svm" title="Link to this heading">#</a></h3>
+<p>支持向量机是一种用于分类和回归任务的算法。SVM 通过寻找最佳分离超平面，将数据分为不同的类别。它在处理高维数据和小样本数据时表现良好。</p>
+</section>
+<section id="k-k-nearest-neighbors-knn">
+<h3>K-近邻算法（K-Nearest Neighbors，KNN）<a class="headerlink" href="#k-k-nearest-neighbors-knn" title="Link to this heading">#</a></h3>
+<p>K-近邻算法是一种基于实例的学习算法，用于分类和回归任务。它通过计算新样本与训练样本之间的距离，选择距离最近的 K 个邻居，进行投票或平均，来确定新样本的类别或预测值。</p>
+</section>
+<section id="random-forest">
+<h3>随机森林（Random Forest）<a class="headerlink" href="#random-forest" title="Link to this heading">#</a></h3>
+<p>随机森林是一种基于决策树的集成学习算法，通过构建多棵决策树并取其预测结果的平均值或多数投票，来提高模型的准确性和稳定性。</p>
+</section>
+<section id="neural-networks">
+<h3>神经网络（Neural Networks）<a class="headerlink" href="#neural-networks" title="Link to this heading">#</a></h3>
+<p>神经网络是一种受生物神经系统启发的算法，适用于各种任务，包括分类、回归、图像处理和自然语言处理。神经网络由多个层组成，每层包含多个神经元，通过权重和偏置连接，进行非线性变换和特征提取。</p>
+<p>通过上述内容的介绍，我们对机器学习的基础概念、数据类型和基本流程有了一个全面的理解。接下来，我们将深入探讨监督学习和无监督学习等具体方法及其应用。</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/intro"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">机器学习简介</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="data.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">术语解释</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">数据集（Dataset）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature">特征（Feature）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#label">标签（Label）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model">模型（Model）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training">训练（Training）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">测试（Testing）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overfitting">过拟合（Overfitting）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#underfitting">欠拟合（Underfitting）</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">数据类型</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-data">数值数据（Numerical Data）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-data">分类数据（Categorical Data）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-data">序列数据（Sequential Data）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-data">图像数据（Image Data）</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">机器学习基本流程</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">数据收集（Data Collection）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">数据预处理（Data Preprocessing）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-selection">模型选择（Model Selection）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-training">模型训练（Model Training）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-evaluation">模型评估（Model Evaluation）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-optimization">模型优化（Model Optimization）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-deployment">模型部署（Model Deployment）</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">机器学习的基本算法</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">线性回归（Linear Regression）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">逻辑回归（Logistic Regression）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree">决策树（Decision Tree）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machine-svm">支持向量机（Support Vector Machine，SVM）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-k-nearest-neighbors-knn">K-近邻算法（K-Nearest Neighbors，KNN）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">随机森林（Random Forest）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-networks">神经网络（Neural Networks）</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By 叶王
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  多看书，多学习
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
