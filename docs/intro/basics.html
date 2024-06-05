@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>机器学习基础 &#8212; 计算机学习笔记</title>
+    <title>机器学习基础概念 &#8212; 计算机学习笔记</title>
   
   
   
@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -171,14 +171,14 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">机器学习</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">机器学习简介</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">机器学习基础</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">机器学习基础概念</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data.html">数据在机器学习中的重要性</a></li>
 <li class="toctree-l2"><a class="reference internal" href="preprocessing.html">数据预处理</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../supervised/supervised.html">Supervised</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../supervised/regression.html">Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../supervised/classification.html">Classification</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../supervised/supervised.html">监督学习</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../supervised/regression.html">回归分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supervised/classification.html">分类分析</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../supervised/evaluation.html">Evaluation</a></li>
 </ul>
 </li>
@@ -366,7 +366,7 @@
       
       
       
-      <li><a href="../../_sources/docs/intro/basics.md" target="_blank"
+      <li><a href="../../_sources/docs/intro/basics.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -376,7 +376,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -450,7 +450,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>机器学习基础</h1>
+    <h1>机器学习基础概念</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -460,44 +460,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">术语解释</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">数据集（Dataset）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature">特征（Feature）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#label">标签（Label）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model">模型（Model）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training">训练（Training）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">测试（Testing）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overfitting">过拟合（Overfitting）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#underfitting">欠拟合（Underfitting）</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">数据类型</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-data">数值数据（Numerical Data）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-data">分类数据（Categorical Data）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-data">序列数据（Sequential Data）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-data">图像数据（Image Data）</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">机器学习基本流程</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">数据收集（Data Collection）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">数据预处理（Data Preprocessing）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-selection">模型选择（Model Selection）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-training">模型训练（Model Training）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-evaluation">模型评估（Model Evaluation）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-optimization">模型优化（Model Optimization）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-deployment">模型部署（Model Deployment）</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">机器学习的基本算法</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">线性回归（Linear Regression）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">逻辑回归（Logistic Regression）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree">决策树（Decision Tree）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machine-svm">支持向量机（Support Vector Machine，SVM）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-k-nearest-neighbors-knn">K-近邻算法（K-Nearest Neighbors，KNN）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">随机森林（Random Forest）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-networks">神经网络（Neural Networks）</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">数据集</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">模型</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">评估</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">交叉验证</a></li>
 </ul>
             </nav>
         </div>
@@ -510,126 +476,191 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>机器学习基础<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1>机器学习基础概念<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>本节将介绍机器学习的基本概念和术语，帮助读者理解后续章节的内容。</p>
 <section id="id2">
-<h2>术语解释<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>在学习机器学习之前，了解一些常用术语是非常重要的。这些术语有助于我们更好地理解机器学习的概念和方法。</p>
-<section id="dataset">
-<h3>数据集（Dataset）<a class="headerlink" href="#dataset" title="Link to this heading">#</a></h3>
-<p>数据集是用于训练和测试机器学习模型的集合。它通常包含多个样本，每个样本由特征和标签组成。特征是描述样本的属性，而标签是我们希望预测的值。</p>
-</section>
-<section id="feature">
-<h3>特征（Feature）<a class="headerlink" href="#feature" title="Link to this heading">#</a></h3>
-<p>特征是用于描述数据样本的单个属性。例如，在一个用于预测房价的数据集中，特征可以包括房子的面积、房间数量、所在位置等。</p>
-</section>
-<section id="label">
-<h3>标签（Label）<a class="headerlink" href="#label" title="Link to this heading">#</a></h3>
-<p>标签是我们希望模型预测的目标值。在监督学习中，每个数据样本都有一个标签。例如，在房价预测中，标签就是房子的价格。</p>
-</section>
-<section id="model">
-<h3>模型（Model）<a class="headerlink" href="#model" title="Link to this heading">#</a></h3>
-<p>模型是通过训练算法从数据中学到的数学表示。它能够根据输入特征做出预测。模型的性能取决于训练数据的质量和算法的选择。</p>
-</section>
-<section id="training">
-<h3>训练（Training）<a class="headerlink" href="#training" title="Link to this heading">#</a></h3>
-<p>训练是指使用已有的数据来调整模型的参数，使其能够准确地进行预测。训练过程涉及多次迭代，每次迭代模型都会调整其参数，以减少预测误差。</p>
-</section>
-<section id="testing">
-<h3>测试（Testing）<a class="headerlink" href="#testing" title="Link to this heading">#</a></h3>
-<p>测试是指在未见过的数据上评估模型的性能。通过测试，我们可以了解模型在实际应用中的表现。</p>
-</section>
-<section id="overfitting">
-<h3>过拟合（Overfitting）<a class="headerlink" href="#overfitting" title="Link to this heading">#</a></h3>
-<p>过拟合是指模型在训练数据上表现很好，但在新数据上表现不佳。这通常是因为模型过于复杂，能够记住训练数据中的噪声和细节。</p>
-</section>
-<section id="underfitting">
-<h3>欠拟合（Underfitting）<a class="headerlink" href="#underfitting" title="Link to this heading">#</a></h3>
-<p>欠拟合是指模型在训练数据和新数据上都表现不佳。这通常是因为模型过于简单，无法捕捉数据中的复杂模式。</p>
-</section>
+<h2>数据集<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>数据集是机器学习的基础。一个典型的数据集由样本和特征组成。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># 创建示例数据集</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;特征1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="s1">&#39;特征2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;标签&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># 创建示例数据集</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="id3">
-<h2>数据类型<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>在机器学习中，我们通常会处理以下几种类型的数据：</p>
-<section id="numerical-data">
-<h3>数值数据（Numerical Data）<a class="headerlink" href="#numerical-data" title="Link to this heading">#</a></h3>
-<p>数值数据是指可以用数字表示的数据。这类数据可以是连续的（如温度、身高）或离散的（如学生人数、房间数量）。</p>
-</section>
-<section id="categorical-data">
-<h3>分类数据（Categorical Data）<a class="headerlink" href="#categorical-data" title="Link to this heading">#</a></h3>
-<p>分类数据是指可以用类别或标签表示的数据。这类数据通常是离散的，如颜色（红、绿、蓝）、性别（男、女）等。</p>
-</section>
-<section id="sequential-data">
-<h3>序列数据（Sequential Data）<a class="headerlink" href="#sequential-data" title="Link to this heading">#</a></h3>
-<p>序列数据是指具有顺序关系的数据，如时间序列数据、文本数据等。序列数据的特点是前后数据点之间存在相关性。</p>
-</section>
-<section id="image-data">
-<h3>图像数据（Image Data）<a class="headerlink" href="#image-data" title="Link to this heading">#</a></h3>
-<p>图像数据是指以图像形式存在的数据。每张图像可以表示为一个像素矩阵，每个像素有一个或多个颜色通道。</p>
-</section>
+<h2>模型<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>模型是指用来进行预测或分类的数学函数。模型通过学习数据中的模式来做出预测。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+
+<span class="c1"># 准备数据</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;特征1&#39;</span><span class="p">,</span> <span class="s1">&#39;特征2&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;标签&#39;</span><span class="p">]</span>
+
+<span class="c1"># 创建并训练模型</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># 进行预测</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">predictions</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="id4">
-<h2>机器学习基本流程<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>机器学习的基本流程可以分为以下几个步骤：</p>
-<section id="data-collection">
-<h3>数据收集（Data Collection）<a class="headerlink" href="#data-collection" title="Link to this heading">#</a></h3>
-<p>数据收集是机器学习流程的第一步。在这一阶段，我们需要收集足够多的高质量数据。数据可以来自多种来源，如数据库、网络抓取、传感器等。</p>
-</section>
-<section id="data-preprocessing">
-<h3>数据预处理（Data Preprocessing）<a class="headerlink" href="#data-preprocessing" title="Link to this heading">#</a></h3>
-<p>数据预处理是对原始数据进行清洗和转换的过程，以便模型能够更好地理解和利用这些数据。数据预处理包括处理缺失值、数据规范化、特征提取等步骤。</p>
-</section>
-<section id="model-selection">
-<h3>模型选择（Model Selection）<a class="headerlink" href="#model-selection" title="Link to this heading">#</a></h3>
-<p>在选择模型时，我们需要考虑任务的类型和数据的特点。常见的模型包括线性回归、决策树、支持向量机、神经网络等。</p>
-</section>
-<section id="model-training">
-<h3>模型训练（Model Training）<a class="headerlink" href="#model-training" title="Link to this heading">#</a></h3>
-<p>模型训练是指使用训练数据来调整模型的参数，使其能够准确地进行预测。在训练过程中，我们需要设置超参数、选择损失函数和优化算法。</p>
-</section>
-<section id="model-evaluation">
-<h3>模型评估（Model Evaluation）<a class="headerlink" href="#model-evaluation" title="Link to this heading">#</a></h3>
-<p>模型评估是指在测试数据上评估模型的性能。常用的评估指标包括准确率、精确率、召回率、F1 分数等。</p>
-</section>
-<section id="model-optimization">
-<h3>模型优化（Model Optimization）<a class="headerlink" href="#model-optimization" title="Link to this heading">#</a></h3>
-<p>模型优化是指通过调整模型的参数和结构，提升模型的性能。这可以包括调参、使用正则化技术、增加数据等。</p>
-</section>
-<section id="model-deployment">
-<h3>模型部署（Model Deployment）<a class="headerlink" href="#model-deployment" title="Link to this heading">#</a></h3>
-<p>模型部署是指将训练好的模型应用到实际环境中，以便进行预测或决策。部署过程中，我们需要考虑模型的响应速度、资源消耗和可靠性。</p>
-</section>
+<h2>评估<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>评估是指通过某些指标来衡量模型的性能。常见的评估指标包括准确率、精确率、召回率等。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="c1"># 计算准确率</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+<span class="n">accuracy</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="id5">
-<h2>机器学习的基本算法<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
-<section id="linear-regression">
-<h3>线性回归（Linear Regression）<a class="headerlink" href="#linear-regression" title="Link to this heading">#</a></h3>
-<p>线性回归是一种最基本的回归算法，用于预测连续值。它假设特征与标签之间存在线性关系，通过最小化预测值与真实值之间的均方误差来调整模型参数。</p>
-</section>
-<section id="logistic-regression">
-<h3>逻辑回归（Logistic Regression）<a class="headerlink" href="#logistic-regression" title="Link to this heading">#</a></h3>
-<p>逻辑回归是一种用于分类任务的算法，尽管其名称中包含“回归”。它通过估计某个事件发生的概率来进行分类，通常用于二分类问题。</p>
-</section>
-<section id="decision-tree">
-<h3>决策树（Decision Tree）<a class="headerlink" href="#decision-tree" title="Link to this heading">#</a></h3>
-<p>决策树是一种基于树结构的算法，用于分类和回归任务。它通过递归地分割数据空间，建立一系列决策规则，最终形成树状结构。</p>
-</section>
-<section id="support-vector-machine-svm">
-<h3>支持向量机（Support Vector Machine，SVM）<a class="headerlink" href="#support-vector-machine-svm" title="Link to this heading">#</a></h3>
-<p>支持向量机是一种用于分类和回归任务的算法。SVM 通过寻找最佳分离超平面，将数据分为不同的类别。它在处理高维数据和小样本数据时表现良好。</p>
-</section>
-<section id="k-k-nearest-neighbors-knn">
-<h3>K-近邻算法（K-Nearest Neighbors，KNN）<a class="headerlink" href="#k-k-nearest-neighbors-knn" title="Link to this heading">#</a></h3>
-<p>K-近邻算法是一种基于实例的学习算法，用于分类和回归任务。它通过计算新样本与训练样本之间的距离，选择距离最近的 K 个邻居，进行投票或平均，来确定新样本的类别或预测值。</p>
-</section>
-<section id="random-forest">
-<h3>随机森林（Random Forest）<a class="headerlink" href="#random-forest" title="Link to this heading">#</a></h3>
-<p>随机森林是一种基于决策树的集成学习算法，通过构建多棵决策树并取其预测结果的平均值或多数投票，来提高模型的准确性和稳定性。</p>
-</section>
-<section id="neural-networks">
-<h3>神经网络（Neural Networks）<a class="headerlink" href="#neural-networks" title="Link to this heading">#</a></h3>
-<p>神经网络是一种受生物神经系统启发的算法，适用于各种任务，包括分类、回归、图像处理和自然语言处理。神经网络由多个层组成，每层包含多个神经元，通过权重和偏置连接，进行非线性变换和特征提取。</p>
-<p>通过上述内容的介绍，我们对机器学习的基础概念、数据类型和基本流程有了一个全面的理解。接下来，我们将深入探讨监督学习和无监督学习等具体方法及其应用。</p>
-</section>
+<h2>交叉验证<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>交叉验证是一种评估模型性能的方法，通过将数据集划分为多个子集，反复训练和测试模型，得到更可靠的性能评估。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+
+<span class="c1"># 进行交叉验证，设置 cv=3 以避免样本数不足的问题</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">scores</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># 进行交叉验证，设置 cv=3 以避免样本数不足的问题</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">scores</span>
+
+<span class="nn">File ~/miniforge3/lib/python3.10/site-packages/sklearn/utils/_param_validation.py:213,</span> in <span class="ni">validate_params.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">207</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">208</span>     <span class="k">with</span> <span class="n">config_context</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span>         <span class="n">skip_parameter_validation</span><span class="o">=</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span>             <span class="n">prefer_skip_nested_validation</span> <span class="ow">or</span> <span class="n">global_skip_validation</span>
+<span class="g g-Whitespace">    </span><span class="mi">211</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">212</span>     <span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">213</span>         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">214</span> <span class="k">except</span> <span class="n">InvalidParameterError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">215</span>     <span class="c1"># When the function is just a wrapper around an estimator, we allow</span>
+<span class="g g-Whitespace">    </span><span class="mi">216</span>     <span class="c1"># the function to delegate validation to the estimator, but we replace</span>
+<span class="g g-Whitespace">    </span><span class="mi">217</span>     <span class="c1"># the name of the estimator by the name of the function in the error</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span>     <span class="c1"># message to avoid confusion.</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span>     <span class="n">msg</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">220</span>         <span class="sa">r</span><span class="s2">&quot;parameter of \w+ must be&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span>         <span class="sa">f</span><span class="s2">&quot;parameter of </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__qualname__</span><span class="si">}</span><span class="s2"> must be&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span>         <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">223</span>     <span class="p">)</span>
+
+<span class="nn">File ~/miniforge3/lib/python3.10/site-packages/sklearn/model_selection/_validation.py:712,</span> in <span class="ni">cross_val_score</span><span class="nt">(estimator, X, y, groups, scoring, cv, n_jobs, verbose, fit_params, params, pre_dispatch, error_score)</span>
+<span class="g g-Whitespace">    </span><span class="mi">709</span> <span class="c1"># To ensure multimetric format is not supported</span>
+<span class="g g-Whitespace">    </span><span class="mi">710</span> <span class="n">scorer</span> <span class="o">=</span> <span class="n">check_scoring</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">scoring</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">712</span> <span class="n">cv_results</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">713</span>     <span class="n">estimator</span><span class="o">=</span><span class="n">estimator</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">714</span>     <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">715</span>     <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">716</span>     <span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">717</span>     <span class="n">scoring</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;score&quot;</span><span class="p">:</span> <span class="n">scorer</span><span class="p">},</span>
+<span class="g g-Whitespace">    </span><span class="mi">718</span>     <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">719</span>     <span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">720</span>     <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">721</span>     <span class="n">fit_params</span><span class="o">=</span><span class="n">fit_params</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">722</span>     <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">723</span>     <span class="n">pre_dispatch</span><span class="o">=</span><span class="n">pre_dispatch</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">724</span>     <span class="n">error_score</span><span class="o">=</span><span class="n">error_score</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">725</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">726</span> <span class="k">return</span> <span class="n">cv_results</span><span class="p">[</span><span class="s2">&quot;test_score&quot;</span><span class="p">]</span>
+
+<span class="nn">File ~/miniforge3/lib/python3.10/site-packages/sklearn/utils/_param_validation.py:213,</span> in <span class="ni">validate_params.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">207</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">208</span>     <span class="k">with</span> <span class="n">config_context</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span>         <span class="n">skip_parameter_validation</span><span class="o">=</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span>             <span class="n">prefer_skip_nested_validation</span> <span class="ow">or</span> <span class="n">global_skip_validation</span>
+<span class="g g-Whitespace">    </span><span class="mi">211</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">212</span>     <span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">213</span>         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">214</span> <span class="k">except</span> <span class="n">InvalidParameterError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">215</span>     <span class="c1"># When the function is just a wrapper around an estimator, we allow</span>
+<span class="g g-Whitespace">    </span><span class="mi">216</span>     <span class="c1"># the function to delegate validation to the estimator, but we replace</span>
+<span class="g g-Whitespace">    </span><span class="mi">217</span>     <span class="c1"># the name of the estimator by the name of the function in the error</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span>     <span class="c1"># message to avoid confusion.</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span>     <span class="n">msg</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">220</span>         <span class="sa">r</span><span class="s2">&quot;parameter of \w+ must be&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span>         <span class="sa">f</span><span class="s2">&quot;parameter of </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__qualname__</span><span class="si">}</span><span class="s2"> must be&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span>         <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">223</span>     <span class="p">)</span>
+
+<span class="nn">File ~/miniforge3/lib/python3.10/site-packages/sklearn/model_selection/_validation.py:351,</span> in <span class="ni">cross_validate</span><span class="nt">(estimator, X, y, groups, scoring, cv, n_jobs, verbose, fit_params, params, pre_dispatch, return_train_score, return_estimator, return_indices, error_score)</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Evaluate metric(s) by cross-validation and also record fit/score times.</span>
+<span class="g g-Whitespace">    </span><span class="mi">141</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span><span class="sd"> Read more in the :ref:`User Guide &lt;multimetric_cross_validation&gt;`.</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">347</span><span class="sd"> [0.28009951 0.3908844  0.22784907]</span>
+<span class="g g-Whitespace">    </span><span class="mi">348</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">349</span> <span class="n">params</span> <span class="o">=</span> <span class="n">_check_params_groups_deprecation</span><span class="p">(</span><span class="n">fit_params</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">groups</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">351</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">indexable</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">353</span> <span class="n">cv</span> <span class="o">=</span> <span class="n">check_cv</span><span class="p">(</span><span class="n">cv</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">classifier</span><span class="o">=</span><span class="n">is_classifier</span><span class="p">(</span><span class="n">estimator</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">355</span> <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">scoring</span><span class="p">):</span>
+
+<span class="nn">File ~/miniforge3/lib/python3.10/site-packages/sklearn/utils/validation.py:517,</span> in <span class="ni">indexable</span><span class="nt">(*iterables)</span>
+<span class="g g-Whitespace">    </span><span class="mi">487</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Make arrays indexable for cross-validation.</span>
+<span class="g g-Whitespace">    </span><span class="mi">488</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">489</span><span class="sd"> Checks consistent length, passes through None, and ensures that everything</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">513</span><span class="sd"> [[1, 2, 3], array([2, 3, 4]), None, &lt;3x1 sparse matrix ...&gt;]</span>
+<span class="g g-Whitespace">    </span><span class="mi">514</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">516</span> <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">_make_indexable</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="k">for</span> <span class="n">X</span> <span class="ow">in</span> <span class="n">iterables</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">517</span> <span class="n">check_consistent_length</span><span class="p">(</span><span class="o">*</span><span class="n">result</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">518</span> <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File ~/miniforge3/lib/python3.10/site-packages/sklearn/utils/validation.py:460,</span> in <span class="ni">check_consistent_length</span><span class="nt">(*arrays)</span>
+<span class="g g-Whitespace">    </span><span class="mi">458</span> <span class="n">uniques</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">lengths</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">459</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">uniques</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">460</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">461</span>         <span class="s2">&quot;Found input variables with inconsistent numbers of samples: </span><span class="si">%r</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">462</span>         <span class="o">%</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">lengths</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">463</span>     <span class="p">)</span>
+
+<span class="ne">ValueError</span>: Found input variables with inconsistent numbers of samples: [150, 100]
+</pre></div>
+</div>
+</div>
+</div>
+<p>通过以上内容，我们了解了机器学习的一些基本概念和术语。在接下来的章节中，我们将深入探讨数据处理和特征工程等主题。</p>
 </section>
 </section>
 
@@ -697,44 +728,10 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">术语解释</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">数据集（Dataset）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature">特征（Feature）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#label">标签（Label）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model">模型（Model）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training">训练（Training）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">测试（Testing）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overfitting">过拟合（Overfitting）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#underfitting">欠拟合（Underfitting）</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">数据类型</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-data">数值数据（Numerical Data）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-data">分类数据（Categorical Data）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-data">序列数据（Sequential Data）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-data">图像数据（Image Data）</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">机器学习基本流程</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">数据收集（Data Collection）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">数据预处理（Data Preprocessing）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-selection">模型选择（Model Selection）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-training">模型训练（Model Training）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-evaluation">模型评估（Model Evaluation）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-optimization">模型优化（Model Optimization）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-deployment">模型部署（Model Deployment）</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">机器学习的基本算法</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">线性回归（Linear Regression）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">逻辑回归（Logistic Regression）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree">决策树（Decision Tree）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machine-svm">支持向量机（Support Vector Machine，SVM）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-k-nearest-neighbors-knn">K-近邻算法（K-Nearest Neighbors，KNN）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">随机森林（Random Forest）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-networks">神经网络（Neural Networks）</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">数据集</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">模型</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">评估</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">交叉验证</a></li>
 </ul>
   </nav></div>
 

@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -61,7 +61,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="数据预处理" href="preprocessing.html" />
-    <link rel="prev" title="机器学习基础" href="basics.html" />
+    <link rel="prev" title="机器学习基础概念" href="basics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -171,14 +171,14 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">机器学习</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">机器学习简介</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="basics.html">机器学习基础</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html">机器学习基础概念</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">数据在机器学习中的重要性</a></li>
 <li class="toctree-l2"><a class="reference internal" href="preprocessing.html">数据预处理</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../supervised/supervised.html">Supervised</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../supervised/regression.html">Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../supervised/classification.html">Classification</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../supervised/supervised.html">监督学习</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../supervised/regression.html">回归分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supervised/classification.html">分类分析</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../supervised/evaluation.html">Evaluation</a></li>
 </ul>
 </li>
@@ -460,8 +460,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">导入必要的库</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">数据类型</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">数据类型</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-data">数值数据（Numerical Data）</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-data">分类数据（Categorical Data）</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-data">序列数据（Sequential Data）</a></li>
@@ -469,16 +468,10 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">数据收集（Data Collection）</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">数据库</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">网络抓取</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">传感器数据</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">开源数据集</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">数据预处理（Data Preprocessing）</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">处理缺失值</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">数据规范化</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">特征提取与选择</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">数据库</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">网络抓取</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">传感器数据</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">开源数据集</a></li>
 </ul>
 </li>
 </ul>
@@ -496,17 +489,24 @@ document.write(`
 <h1>数据在机器学习中的重要性<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>在机器学习中，数据是训练和测试模型的基础。数据可以分为多种类型，每种类型的数据在不同的机器学习任务中有不同的应用。</p>
 <section id="id2">
-<h2>导入必要的库<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>在开始数据处理之前，我们需要导入一些常用的库。</p>
+<h2>数据类型<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="numerical-data">
+<h3>数值数据（Numerical Data）<a class="headerlink" href="#numerical-data" title="Link to this heading">#</a></h3>
+<p>数值数据是指可以用数字表示的数据。它可以进一步分为连续型数据和离散型数据。连续型数据如温度、身高，离散型数据如人口数量、房间数量。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">MinMaxScaler</span><span class="p">,</span> <span class="n">OneHotEncoder</span>
-<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
+
+<span class="c1"># 设置字体和解决负号显示问题</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.sans-serif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Hiragino Sans GB&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.unicode_minus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># 示例：数值数据</span>
+<span class="n">num_data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;温度&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">20.5</span><span class="p">,</span> <span class="mf">22.3</span><span class="p">,</span> <span class="mf">19.8</span><span class="p">,</span> <span class="mf">23.1</span><span class="p">,</span> <span class="mf">21.6</span><span class="p">],</span> <span class="s1">&#39;人口数量&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">1200</span><span class="p">,</span> <span class="mi">1300</span><span class="p">,</span> <span class="mi">1400</span><span class="p">]}</span>
+<span class="n">num_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">num_data</span><span class="p">)</span>
+<span class="n">num_df</span>
 </pre></div>
 </div>
 </div>
@@ -519,22 +519,6 @@ document.write(`
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="id3">
-<h2>数据类型<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<section id="numerical-data">
-<h3>数值数据（Numerical Data）<a class="headerlink" href="#numerical-data" title="Link to this heading">#</a></h3>
-<p>数值数据是指可以用数字表示的数据。它可以进一步分为连续型数据和离散型数据。连续型数据如温度、身高，离散型数据如人口数量、房间数量。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 示例：数值数据</span>
-<span class="n">num_data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;温度&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">20.5</span><span class="p">,</span> <span class="mf">22.3</span><span class="p">,</span> <span class="mf">19.8</span><span class="p">,</span> <span class="mf">23.1</span><span class="p">,</span> <span class="mf">21.6</span><span class="p">],</span> <span class="s1">&#39;人口数量&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">1200</span><span class="p">,</span> <span class="mi">1300</span><span class="p">,</span> <span class="mi">1400</span><span class="p">]}</span>
-<span class="n">num_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">num_data</span><span class="p">)</span>
-<span class="n">num_df</span>
 </pre></div>
 </div>
 </div>
@@ -574,8 +558,9 @@ document.write(`
 <p>图像数据通常以像素矩阵形式存在，每个像素有一个或多个颜色通道。它广泛应用于计算机视觉任务，如图像分类、对象检测。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 示例：加载和显示图像数据</span>
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_sample_image</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_sample_image</span>
+
+<span class="c1"># 示例：加载和显示图像数据</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">load_sample_image</span><span class="p">(</span><span class="s1">&#39;flower.jpg&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;示例图像&#39;</span><span class="p">)</span>
@@ -590,99 +575,22 @@ document.write(`
 <section id="data-collection">
 <h2>数据收集（Data Collection）<a class="headerlink" href="#data-collection" title="Link to this heading">#</a></h2>
 <p>数据收集是机器学习流程的第一步。高质量的数据对模型的成功至关重要。数据收集可以来自多种来源。</p>
-<section id="id4">
-<h3>数据库<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<section id="id3">
+<h3>数据库<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>企业内部的数据库往往包含了大量有价值的历史数据。这些数据可以直接用于机器学习模型的训练。</p>
 </section>
-<section id="id5">
-<h3>网络抓取<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<section id="id4">
+<h3>网络抓取<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>通过编写爬虫程序，可以从互联网上抓取大量公开数据。例如，从新闻网站抓取文本数据，从电商网站抓取商品信息。</p>
 </section>
-<section id="id6">
-<h3>传感器数据<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<section id="id5">
+<h3>传感器数据<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>在物联网（IoT）应用中，传感器数据是一个重要的数据来源。例如，智能家居设备、工业传感器等。</p>
 </section>
-<section id="id7">
-<h3>开源数据集<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<section id="id6">
+<h3>开源数据集<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>许多研究机构和公司会发布开源数据集，供研究人员和开发者使用。例如，著名的开源数据集有ImageNet、CIFAR-10、MNIST等。</p>
-</section>
-</section>
-<section id="data-preprocessing">
-<h2>数据预处理（Data Preprocessing）<a class="headerlink" href="#data-preprocessing" title="Link to this heading">#</a></h2>
-<p>在将数据输入机器学习模型之前，通常需要对数据进行预处理。数据预处理的目的是提高数据质量，使其更适合于模型训练。</p>
-<section id="id8">
-<h3>处理缺失值<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
-<p>在数据收集中，可能会遇到缺失值。这些缺失值可能是由于数据收集过程中的错误或遗漏造成的。常见的处理缺失值的方法有删除包含缺失值的样本、用均值或中位数填补缺失值等。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 示例：处理缺失值</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">]}</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;原始数据:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-
-<span class="c1"># 使用均值填补缺失值</span>
-<span class="n">imputer</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
-<span class="n">df_imputed</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">imputer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">填补缺失值后的数据:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df_imputed</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="id9">
-<h3>数据规范化<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
-<p>数据规范化是指将不同量纲的数据转换到同一量纲上，以避免某些特征对模型的影响过大。常见的规范化方法有标准化（Standardization）和归一化（Normalization）。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 示例：数据规范化</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">]}</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;原始数据:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-
-<span class="c1"># 标准化数据</span>
-<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
-<span class="n">df_standardized</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">标准化后的数据:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df_standardized</span><span class="p">)</span>
-
-<span class="c1"># 归一化数据</span>
-<span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
-<span class="n">df_normalized</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">归一化后的数据:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df_normalized</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="id10">
-<h3>特征提取与选择<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
-<p>特征提取是指从原始数据中提取有用的信息，转换为模型可以处理的特征。特征选择是从众多特征中选择对模型预测最有帮助的特征。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 示例：特征提取和选择</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">],</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">]}</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;原始数据:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-
-<span class="c1"># 使用 OneHotEncoder 对分类数据进行编码</span>
-<span class="n">encoder</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">sparse_output</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">encoded_features</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;C&#39;</span><span class="p">]])</span>
-<span class="n">encoded_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">encoded_features</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">encoder</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">([</span><span class="s1">&#39;C&#39;</span><span class="p">]))</span>
-
-<span class="c1"># 将编码后的特征与原数据集连接</span>
-<span class="n">df_combined</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">encoded_df</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">编码后的数据:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df_combined</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>通过上述步骤，我们可以看到数据预处理的基本流程和方法。在实际的机器学习项目中，数据预处理是至关重要的一步，它直接影响到模型的性能和效果。在接下来的章节中，我们将进一步探讨具体的机器学习算法及其应用。</p>
+<p>通过上述内容，我们可以了解数据在机器学习中的重要性以及不同类型的数据和数据收集方法。在接下来的章节中，我们将讨论数据预处理和特征工程。</p>
 </section>
 </section>
 </section>
@@ -723,7 +631,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">机器学习基础</p>
+        <p class="prev-next-title">机器学习基础概念</p>
       </div>
     </a>
     <a class="right-next"
@@ -751,8 +659,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">导入必要的库</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">数据类型</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">数据类型</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-data">数值数据（Numerical Data）</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-data">分类数据（Categorical Data）</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-data">序列数据（Sequential Data）</a></li>
@@ -760,16 +667,10 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">数据收集（Data Collection）</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">数据库</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">网络抓取</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">传感器数据</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">开源数据集</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">数据预处理（Data Preprocessing）</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">处理缺失值</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">数据规范化</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">特征提取与选择</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">数据库</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">网络抓取</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">传感器数据</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">开源数据集</a></li>
 </ul>
 </li>
 </ul>
