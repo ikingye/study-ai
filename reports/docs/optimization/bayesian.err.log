@@ -1,0 +1,69 @@
+Traceback (most recent call last):
+  File "/Users/yewang/.local/pipx/venvs/jupyter-book/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/yewang/.local/pipx/venvs/jupyter-book/lib/python3.9/site-packages/nbclient/client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/yewang/.local/pipx/venvs/jupyter-book/lib/python3.9/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/Users/yewang/.pyenv/versions/3.9.15/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/Users/yewang/.local/pipx/venvs/jupyter-book/lib/python3.9/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/Users/yewang/.local/pipx/venvs/jupyter-book/lib/python3.9/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/yewang/.local/pipx/venvs/jupyter-book/lib/python3.9/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.gaussian_process import GaussianProcessRegressor
+from sklearn.gaussian_process.kernels import RBF, ConstantKernel as C
+
+# 设置字体和解决负号显示问题
+plt.rcParams['font.sans-serif'] = 'Hiragino Sans GB'
+plt.rcParams['axes.unicode_minus'] = False
+
+# 定义目标函数
+def target_function(x):
+    return np.sin(x) + 0.1 * np.random.randn(*x.shape)
+
+# 生成训练数据
+X_train = np.array([1, 3, 5, 6, 7, 8]).reshape(-1, 1)
+y_train = target_function(X_train)
+
+# 定义高斯过程模型
+kernel = C(1.0, (1e-3, 1e3)) * RBF(1, (1e-2, 1e2))
+gp = GaussianProcessRegressor(kernel=kernel, n_restarts_optimizer=10)
+
+gp.fit(X_train, y_train)
+
+# 生成测试数据并预测
+test_points = np.linspace(0, 10, 100).reshape(-1, 1)
+y_pred, sigma = gp.predict(test_points, return_std=True)
+
+# 绘制结果
+plt.figure(figsize=(10, 5))
+plt.plot(X_train, y_train, 'ro', label='训练数据')
+plt.plot(test_points, y_pred, 'b-', label='预测均值')
+plt.fill_between(test_points.ravel(),
+                 y_pred - 1.96 * sigma,
+                 y_pred + 1.96 * sigma,
+                 alpha=0.2, color='b', label='置信区间')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('高斯过程回归')
+plt.legend()
+plt.show()
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [0;32mIn[1], line 1[0m
+[0;32m----> 1[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
+[1;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m
+[1;32m      3[0m [38;5;28;01mfrom[39;00m [38;5;21;01msklearn[39;00m[38;5;21;01m.[39;00m[38;5;21;01mgaussian_process[39;00m [38;5;28;01mimport[39;00m GaussianProcessRegressor
+
+[0;31mModuleNotFoundError[0m: No module named 'numpy'
+

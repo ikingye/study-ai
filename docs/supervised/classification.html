@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/supervised/classification';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Evaluation" href="evaluation.html" />
+    <link rel="next" title="模型评估" href="evaluation.html" />
     <link rel="prev" title="回归分析" href="regression.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -179,41 +179,41 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="supervised.html">监督学习</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="regression.html">回归分析</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">分类分析</a></li>
-<li class="toctree-l2"><a class="reference internal" href="evaluation.html">Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html">模型评估</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../unsupervised/unsupervised.html">Unsupervised</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../unsupervised/clustering.html">Clustering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../unsupervised/dimensionality.html">Dimensionality</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../unsupervised/anomaly.html">Anomaly</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../unsupervised/unsupervised.html">无监督学习</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../unsupervised/clustering.html">聚类分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unsupervised/dimensionality.html">降维</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unsupervised/anomaly.html">异常检测</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../advanced/advanced.html">Advanced</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/ensemble.html">Ensemble</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/feature.html">Feature</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/tuning.html">Tuning</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../advanced/advanced.html">高级主题</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/ensemble.html">集成学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/feature.html">特征工程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/tuning.html">超参数调优</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../model/model.html">Model</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../model/selection.html">Selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../model/validation.html">Validation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../model/interpretation.html">Interpretation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../model/model.html">模型选择与评估</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../model/selection.html">模型选择</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model/validation.html">模型验证</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model/interpretation.html">模型解释</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../optimization/optimization.html">Optimization</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../optimization/gradient.html">Gradient</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../optimization/stochastic.html">Stochastic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../optimization/bayesian.html">Bayesian</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../optimization/optimization.html">优化算法</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../optimization/gradient.html">梯度下降</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optimization/stochastic.html">随机优化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optimization/bayesian.html">贝叶斯优化</a></li>
 </ul>
 </li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">深度学习</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../deep/deep.html">Deep</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../deep/neural.html">Neural</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../deep/cnn.html">Cnn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../deep/rnn.html">Rnn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../deep/gan.html">Gan</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../deep/deep.html">深度学习概述</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deep/neural.html">神经网络基础</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/cnn.html">卷积神经网络（CNN）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/rnn.html">循环神经网络（RNN）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/gan.html">生成对抗网络（GAN）</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../architectures/architectures.html">Architectures</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -590,7 +590,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Evaluation</p>
+        <p class="prev-next-title">模型评估</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
